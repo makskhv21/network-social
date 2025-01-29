@@ -29,5 +29,12 @@ router.get('/posts', authenticateToken, PostController.getAllPosts);
 router.get('/posts/:id', authenticateToken, PostController.getPostById);
 router.delete('/posts/:id', authenticateToken, PostController.deletePost);
 
+// Routes comments
+router.post("/comments", authenticateToken, CommentController.createComment);
+router.delete(
+  "/comments/:id",
+  authenticateToken,
+  CommentController.deleteComment
+);
 
 module.exports = router;
