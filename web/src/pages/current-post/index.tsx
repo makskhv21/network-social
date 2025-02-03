@@ -9,7 +9,7 @@ export const CurrentPost = () => {
   const { data } = useGetPostByIdQuery(params?.id ?? "")
 
   if (!data) {
-    return <h2>Поста не существует</h2>
+    return <h2>Поста не існує</h2>
   }
 
   const {
