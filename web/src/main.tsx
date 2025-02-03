@@ -8,6 +8,17 @@ import { NextUIProvider } from "@nextui-org/react"
 
 const container = document.getElementById("root")
 
+const router = createBrowserRouter([
+  {
+    path: '/auth',
+    element: <h1>Auth</h1>
+  },
+  {
+    path: '/',
+    element: <h1>Layout</h1>
+  }
+]);
+
 if (container) {
   const root = createRoot(container)
 
