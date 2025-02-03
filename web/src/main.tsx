@@ -1,23 +1,54 @@
 import React from "react"
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { createRoot } from "react-dom/client"
 import { Provider } from "react-redux"
 import App from "./App"
 import { store } from "./app/store"
 import "./index.css"
 import { NextUIProvider } from "@nextui-org/react"
+import { ThemeProvider } from "./components/theme-provider"
+import { Auth } from "./pages/auth"
+import { Posts } from "./pages/posts"
+import { Layout } from "./components/layout"
+import { UserProfile } from "./pages/user-profile"
+import { CurrentPost } from "./pages/current-post"
+import { Followers } from "./pages/followers"
+import { Following } from "./pages/following"
 
 const container = document.getElementById("root")
 
 const router = createBrowserRouter([
   {
-    path: '/auth',
-    element: <h1>Auth</h1>
+    path: "/auth",
+    element: <Auth />,
   },
   {
-    path: '/',
-    element: <h1>Layout</h1>
-  }
-]);
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "",
+        element: <Posts />,
+      },
+      {
+        path: "posts/:id",
+        element: <CurrentPost />,
+      },
+      {
+        path: "users/:id",
+        element: <UserProfile />,
+      },
+      {
+        path: "followers",
+        element: <Followers />,
+      },
+      {
+        path: "following",
+        element: <Following />,
+      },
+    ],
+  },
+])
 
 if (container) {
   const root = createRoot(container)
@@ -26,7 +57,9 @@ if (container) {
     <React.StrictMode>
       <Provider store={store}>
         <NextUIProvider>
-          <App />
+          <ThemeProvider>
+            <RouterProvider router={router} />
+          </ThemeProvider>
         </NextUIProvider>
       </Provider>
     </React.StrictMode>,
