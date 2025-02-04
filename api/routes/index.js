@@ -15,13 +15,13 @@ const storage = multer.diskStorage({
   }
 });
 
-const uploads = multer({ storage: storage });
+const upload = multer({ storage: storage });
 
 router.post('/register', UserController.register);
 router.post('/login', UserController.login);
 router.get('/current', authenticateToken, UserController.current);
 router.get('/users/:id', authenticateToken, UserController.login);
-router.put('/users/:id', authenticateToken, UserController.updateUser);
+router.put("/users/:id", authenticateToken, upload.single('avatar'), UserController.updateUser);
 
 // Routes posts
 router.post('/posts', authenticateToken, PostController.createPost);
