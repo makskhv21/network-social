@@ -12,14 +12,10 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": false,  
+    "noEmit": false,
     "jsx": "react-jsx",
     "types": ["vitest/globals"]
   },
-  "include": [
-    "vite.config.ts",
-    "src/**/*"
-  ],
+  "include": ["vite.config.ts", "src/**/*"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
-

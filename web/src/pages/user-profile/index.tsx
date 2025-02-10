@@ -102,13 +102,10 @@ export const UserProfile = () => {
                   )
                 }
               >
-                {data?.isFollowing ? 'Не слідкувати' : 'Стежити'}
+                {data?.isFollowing ? "Не слідкувати" : "Стежити"}
               </Button>
             ) : (
-              <Button
-                endContent={<CiEdit />}
-                onClick={() => onOpen()}
-              >
+              <Button endContent={<CiEdit />} onClick={() => onOpen()}>
                 Редактировать
               </Button>
             )}
@@ -117,12 +114,15 @@ export const UserProfile = () => {
         <Card className="flex flex-col space-y-4 p-5 flex-1">
           <ProfileInfo title="Пошта:" info={data.email} />
           <ProfileInfo title="Місцезнаходження:" info={data.location} />
-          <ProfileInfo title="Дата народження:" info={formatToClientDate(data.dateOfBirth)} />
+          <ProfileInfo
+            title="Дата народження:"
+            info={formatToClientDate(data.dateOfBirth)}
+          />
           <ProfileInfo title="Про мене:" info={data.bio} />
-          
+
           <div className="flex gap-2">
-            <CountInfo count={data.followers.length} title="Читачі"/>
-            <CountInfo count={data.following.length} title="Стежить"/>
+            <CountInfo count={data.followers.length} title="Читачі" />
+            <CountInfo count={data.following.length} title="Стежить" />
           </div>
         </Card>
       </div>
